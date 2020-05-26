@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title>
+  <style>
+  *{
+  				margin:0;
+  				padding:0;
+  				box-sizing:border-box;
+  				}
+  body{
+  				text-align:center;
+  				background: #404040;
+          background: -webkit-linear-gradient(bottom right, #454545, #949494);<br>
+          background: -moz-linear-gradient(bottom right, #454545, #949494);<br>
+          background: linear-gradient(to top left, #454545, #949494);
+          background: url("{{url_for('static', filename='bg.jpg')}}");
+          background-position:center;
+          max-width:700px;
+          margin:auto;
+          font-family:"Arial Rounded MT Bold";
+  				}
+  	 hr{
+      border:1px solid #fff;
+      margin:5px;
+  }
+  h1{
+  				color:#fff;}
+  div{
+      float:right;
+  }
+  div ul{
+      list-style:none;
+  }
+  div ul li{
+      display:inline-block;
+      margin:13px
+  }
+  div ul li a{
+      text-decoration:none;
+      color:#fff;
+      padding:5px;
+      margin:10px;
+      border:1px solid #fff;
+      border-radius:5px;
+  }
+  div ul li a.active{
+  				background:#fff;
+  				color:#404040;
+  }
+  div ul li a:hover{
+      background:#fff;
+      color:#404040;
+  }
+  img{
+  				width:100%;
+  				height:60%;
+          max-width:282px;
+          max-height:245px;
+  		  	border-radius:10px;
+  				}
+  .container{
+  				background:#fff;
+  				width:80%;
+  				margin:10%;
+          margin-bottom:4%;
+  				border-radius:10px;
+  				color:#404040;
+  				font-size:1.2em;
+  				box-shadow:5px 5px 10px grey;
+  				padding:3px;
+  				}
+  h4{
+          margin:10px;
+          padding:10px;
+          text-align:left;
+          margin-bottom:0;
+  }
+  </style>
+</head>
+<body>
+<div class="main">
+<div class="list">
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a class="active" href="/member">Members</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+</div>
+<br>
+  <h1>DESIGNERS</h1>
+  <br>
+  <hr>
+  <div class="container">
+    <div class="image">
+      <img src="{{url_for('static',filename='paras.jpg')}}">
+    </div>
+    <h4>
+    <br>
+    Paras Gupta<br>
+    B.Tech ECE 1st year<br>
+    KIET Group of Institutions
+    <br>
+    </h4>
+  </div>
+  <div class="container">
+    <div class="image">
+      <img src="{{url_for('static', filename='kannu.png')}}">
+    </div>
+    <h4>
+    <br>
+    Kanishka Nagar<br>
+    B.Tech ECE 1st year<br>
+    KIET Group of Institutions
+    <br>
+
+    </h4>
+  </div>
+  <div class="container">
+    <div class="image">
+      <img src="{{url_for('static', filename='uttuu.jpg')}}">
+    </div>
+    <h4>
+    <br>
+    Utkarsh Upadhyay<br>
+    B.Tech IT 1st year<br>
+    KIET Group of Institutions
+    <br>
+
+    </h4>
+  </div>
+</div>
+</body>
+</html>

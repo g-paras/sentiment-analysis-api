@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <style>
+  *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+  }
+  body{
+      background: url("{{url_for('static', filename='bg.jpg')}}");
+      color:#fff;
+      background-position: center;
+      text-align:center;
+      max-width:700px;
+      margin:auto;
+      font-family:"Arial Rounded MT Bold";
+  }
+  div{
+      float:right;
+  }
+  div ul{
+      list-style:none;
+  }
+  div ul li{
+      display:inline-block;
+      margin:13px
+  }
+  div ul li a{
+      text-decoration:none;
+      color:#fff;
+      padding:5px;
+      margin:10px;
+      border:1px solid #fff;
+      border-radius:5px;
+  }
+  div ul li a.active{
+      background:#fff;
+      color:#404040;
+  }
+  div ul li a:hover{
+      background:#fff;
+      color:#404040;
+  }
+  hr{
+      border:1px solid #fff;
+      margin:5px;
+  }
+  input{
+      margin:auto;
+      background:transparent;
+      outline:none;
+      margin-bottom:20px;
+      padding:5px;
+      text-align:center;
+      width:80%;
+      heigh:20%;
+      color:#fff;
+      border:1px solid white;
+      border-radius:5px;
+      font-size:1.3em;
+      max-width:700px;
+  }
+  .submit{
+      background:#fff;
+      width:60%;
+      border-radius:20px;
+      max-width:400px;
+      color:#404040;
+  }
+  p{
+      text-shadow:2px 3px 6px black;
+      font-size:1.3em;
+  }
+  .main{
+  				margin:10px;
+  				padding:10px;
+  				text-align:left;
+  				}
+  </style>
+</head>
+<body>
+<div>
+<ul>
+  <li><a class="active" href="/">Home</a></li>
+  <li><a href="/member">Members</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+</div>
+<br>
+<h1>Sentiment&nbspAnalysis</h1>
+<br>
+<hr>
+<br>
+<br>
+<br>
+<form method = "POST">
+  <input type="text" name="twt" placeholder="Enter text here...">
+  <br>
+  <br>
+  <input class="submit" type="submit" value="PREDICT">
+</form>
+<br>
+<br>
+<h3>{{text}}</h3>
+<br>
+<h3>{{sentiment}}</h3>
+<br>
+<div class="main">
+<p>Note:</p>
+<p>
+	Sentiment analysis studies the subjective information in an expression, that is, the opinions, appraisals, emotions, or attitudes towards a topic, person or entity. Expressions can be classified as positive, negative, or neutral.</p>
+	<br>
+	<p> For example: “I really like the new design of your website!” → Positive.
+</p>
+</div>
+<br>
+<br>
+<br>
+<p> &nbsp </p>
+</body>
+</html>
