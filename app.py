@@ -9,11 +9,11 @@ def hello():
 		text = request.form.get('twt')
 		blob = TextBlob(text).sentiment
 		if blob[0]>0:
-			sentiment="Positive "
+			sentiment="Positive \U0001f600"
 		elif blob[0]<0:
-			sentiment="Negative"
+			sentiment="Negative \U0001F641 "
 		else:
-			sentiment="Neutral"
+			sentiment="Neutral \U0001F610"
 		return render_template('index.html',text=blob,sentiment=sentiment )
 	return render_template('index.html')
 
