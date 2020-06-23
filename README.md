@@ -14,5 +14,8 @@ Python dependencies used:-
 5. Numpy 1.9.0
 6. Regex 2020.6.8
 7. NLTK 3.5
+
 Check it out on 
 https://sentiment-analysis-web-app.herokuapp.com
+
+It might take few seconds to load so please wait
