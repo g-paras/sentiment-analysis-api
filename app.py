@@ -24,5 +24,6 @@ def about():
 @app.route('/member')
 def contact():
 	return render_template('members.html')
+	
 if __name__ == "__main__":
 	app.run()
