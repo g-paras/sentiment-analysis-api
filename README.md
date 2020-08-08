@@ -1,4 +1,4 @@
-# sentiment-analysis-api
+# Sentiment Analysis 
 This is a sentiment analysis web application using python's textblob library and deployed using flask api
 on heroku server.
 For training and testing our sentiment analysis model we used Google colaboratorywhich
@@ -19,3 +19,4 @@ Check it out on
 https://sentiment-analysis-web-app.herokuapp.com
 
 It might take few seconds to load so please wait
+<img src="https://github.com/g-paras/sentiment-analysis-api/blob/master/static/icon.png?raw=true">
