@@ -7,6 +7,8 @@ app = Flask(__name__,template_folder='templates')
 def hello():
 	if request.method == 'POST':
 		text = request.form.get('twt')
+		with open("texts.txt", 'a') as file:
+			file.write(text + '\n')
 		blob = TextBlob(text).sentiment
 		if blob[0]>0:
 			sentiment="Positive \U0001f600"
