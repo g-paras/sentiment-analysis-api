@@ -13,7 +13,7 @@ def hello():
 		if blob[0]>0:
 			sentiment="Positive \U0001f600"
 		elif blob[0]<0:
-			sentiment="Negative \U0001F641 "
+			sentiment="Negative \U0001F641"
 		else:
 			sentiment="Neutral \U0001F610"
 		return render_template('index.html',text=blob,sentiment=sentiment )
