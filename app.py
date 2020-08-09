@@ -1,5 +1,7 @@
 from textblob import TextBlob
 from flask import Flask, render_template, request
+import sqlite3 as sql
+from datetime import datetime
 
 app = Flask(__name__, template_folder='templates')
 
@@ -15,6 +17,12 @@ def hello():
             sentiment = "Negative \U0001F641"
         else:
             sentiment = "Neutral \U0001F610"
+
+        with sql.connect("text.sqlite") as con:
+            cur = con.cursor()
+            cur.execute("""INSERT INTO Texts (text, date, sentiment) 
+               VALUES (?,?,?)""",(text, datetime.now(), sentiment.split()[0]))
+            con.commit()
         return render_template('index.html', text=blob, sentiment=sentiment)
     return render_template('index.html')
 
