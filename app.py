@@ -1,21 +1,36 @@
 from textblob import TextBlob
 from flask import Flask, render_template, request
+from model_nltk import remove_noise, word_tokenize
+import pickle
 
 app = Flask(__name__, template_folder='templates')
+
+# I have creted two models but I am using model_nltk because of its high accurcy and less execution time.
+# textblob was used in the development mode for checking the subjectivity and polarity of the text
+f = open('my_classifier.pickle', 'rb')
+classifier = pickle.load(f)
+f.close()
 
 
 @app.route('/', methods=['POST', 'GET'])
 def hello():
     if request.method == 'POST':
-        text = request.form.get('twt')
-        blob = TextBlob(text).sentiment
-        if blob[0] > 0:
-            sentiment = "Positive \U0001f600"
-        elif blob[0] < 0:
-            sentiment = "Negative \U0001F641"
+        sentence = request.form.get('twt')
+        custom_tokens = remove_noise(word_tokenize(sentence))
+        sentiment = classifier.classify(
+            dict([token, True] for token in custom_tokens))
+
+        if sentiment == "Positive":
+            sentiment += " \U0001f600"
+
+        elif sentiment == "Negative":
+            sentiment += " \U0001F641"
+
         else:
-            sentiment = "Neutral \U0001F610"
-        return render_template('index.html', text=blob, sentiment=sentiment)
+            pass
+        text = "You have entered " + sentence
+        return render_template('index.html', text=text, sentiment=sentiment)
+
     return render_template('index.html')
 
 
@@ -30,4 +45,4 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

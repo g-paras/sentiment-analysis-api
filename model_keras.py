@@ -46,17 +46,6 @@ model.fit(x_train, y_train, validation_data = (x_test, y_test), epochs = 10, bat
 scores = model.evaluate(x_test, y_test, verbose = 0)
 print('Accuracy: %2f%%' % (scores[1]*100))
 
-!pip install -U -q PyDrive
-from pydrive.auth import GoogleAuth
-from pydrive.drive import GoogleDrive
-from google.colab import auth
-from oauth2client.client import GoogleCredentials
-
-auth.authenticate_user()
-gauth = GoogleAuth()
-gauth.credentials = GoogleCredentials.get_application_default()
-drive = GoogleDrive(gauth)
-
 model.save('model.h5')
 model_file = drive.CreateFile({'title':'model.h5'})
 model_file.SetContentFile('model.h5')
