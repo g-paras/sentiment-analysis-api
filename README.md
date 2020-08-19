@@ -1,5 +1,6 @@
-<img style="width:5%; height:15%'" src="https://github.com/g-paras/sentiment-analysis-api/blob/master/static/icon.png?raw=true">
-# Sentiment Analysis 
+<img style="width:5%; height:5%;" src="https://github.com/g-paras/sentiment-analysis-api/blob/master/static/icon.png?raw=true">
+
+# Sentiment Analysis
 This is a sentiment analysis web applications, we have used nltk tweet sample for training model and Naive bais classier and deployed using flask api on heroku server.
 For training and testing our sentiment analysis model we used Google colaboratory which is an open source platform for machine learning or data science projects.
 It helps us training the model fast by using virtual GPU.
