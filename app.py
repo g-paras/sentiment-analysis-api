@@ -30,7 +30,7 @@ def hello():
             pass
 
         text = "You have entered \" " + sentence + "\""
-        return render_template('index.html', text=text, sentiment=sentiment)
+        return render_template('index.html', text=text, sentiment="Sentiment: " + sentiment)
 
     return render_template('index.html')
 

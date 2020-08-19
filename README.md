@@ -20,11 +20,11 @@ https://sentiment-analysis-web-app.herokuapp.com
 It might take few seconds to load please give it a try
 
 ## Files and folder classification
-#### static folder contains all the images used
-#### templates folder has all html templates
-#### requirement.txt contains the python dependencies used in this project
-#### nltk.txt has the files which need to be downloaded for processing the input text
-#### Procfile is configuration file for Heroku server
-#### app.py is the flask application file
-#### model_nltk.py contains the source code for the Naive Bayes classifer which has been used in the production
-#### model_keras is another model but we haven't used this in production because of its accuracy.
+static folder contains all the images used
+templates folder has all html templates
+requirement.txt contains the python dependencies used in this project
+nltk.txt has the files which need to be downloaded for processing the input text
+Procfile is configuration file for Heroku server
+app.py is the flask application file
+model_nltk.py contains the source code for the Naive Bayes classifer which has been used in the production
+model_keras.py is another source code for model usign keras but we haven't used this in production because of its accuracy.
