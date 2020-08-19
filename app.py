@@ -1,15 +1,15 @@
-from textblob import TextBlob
 from flask import Flask, render_template, request
 from model_nltk import remove_noise, word_tokenize
-import pickle
+from pickle import load
+#from textblob import TextBlob
 
 app = Flask(__name__, template_folder='templates')
 
 # I have creted two models but I am using model_nltk because of its high accurcy and less execution time.
 # textblob was used in the development mode for checking the subjectivity and polarity of the text
-f = open('my_classifier.pickle', 'rb')
-classifier = pickle.load(f)
-f.close()
+
+with open('my_classifier.pickle', 'rb') as f:
+    classifier = pickle.load(f)
 
 
 @app.route('/', methods=['POST', 'GET'])
