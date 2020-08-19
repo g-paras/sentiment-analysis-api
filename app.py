@@ -3,7 +3,7 @@ from model_nltk import remove_noise, word_tokenize
 from pickle import load
 #from textblob import TextBlob
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 # I have creted two models but I am using model_nltk because of its high accurcy and less execution time.
 # textblob was used in the development mode for checking the subjectivity and polarity of the text
