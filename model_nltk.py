@@ -44,6 +44,18 @@ def get_tweets_for_model(cleaned_tokens_list):
         yield dict([token, True] for token in tweet_tokens)
 
 
+def predict_sentiment(sentence):
+    custom_tokens = remove_noise(word_tokenize(sentence))
+    print(sentence, classifier.classify(
+        dict([token, True] for token in custom_tokens)))
+
+
+def save_model():
+    f = open('my_classifier.pickle', 'wb')
+    pickle.dump(classifier, f)
+    f.close()
+
+
 if __name__ == "__main__":
 
     positive_tweets = twitter_samples.strings('positive_tweets.json')
