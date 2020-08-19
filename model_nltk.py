@@ -44,10 +44,10 @@ def get_tweets_for_model(cleaned_tokens_list):
         yield dict([token, True] for token in tweet_tokens)
 
 
-def predict_sentiment(sentence):
+def predict_sentiment(sentence, classifier):
     custom_tokens = remove_noise(word_tokenize(sentence))
-    print(sentence, classifier.classify(
-        dict([token, True] for token in custom_tokens)))
+    return classifier.classify(
+        dict([token, True] for token in custom_tokens))
 
 
 def save_model():
@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
     random.shuffle(dataset)
 
-    train_data = dataset[:7000]
+    train_data = dataset[: 7000]
     test_data = dataset[7000:]
 
     classifier = NaiveBayesClassifier.train(train_data)

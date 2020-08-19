@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from model_nltk import remove_noise, word_tokenize
+from model_nltk import predict_sentiment
 from pickle import load
 #from textblob import TextBlob
 
@@ -16,9 +16,8 @@ with open('my_classifier.pickle', 'rb') as f:
 def hello():
     if request.method == 'POST':
         sentence = request.form.get('twt')
-        custom_tokens = remove_noise(word_tokenize(sentence))
-        sentiment = classifier.classify(
-            dict([token, True] for token in custom_tokens))
+
+        sentiment = predict_sentiment(sentence, classifier)
 
         if sentiment == "Positive":
             sentiment += " \U0001f600"
