@@ -1,4 +1,3 @@
-twitter_samples
 punkt
 stopwords
 wordnet
