@@ -1,12 +1,27 @@
 from flask import Flask, render_template, request, jsonify
 from model_nltk import predict_sentiment
 from pickle import load
+from flask_sqlalchemy import SQLAlchemy
 #from textblob import TextBlob
 
 app = Flask(__name__, template_folder='templates')
 
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.sqlite3"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+db = SQLAlchemy(app)
+
+
 # I have creted two models but I am using model_nltk because of its high accurcy and less execution time.
 # textblob was used in the development mode for checking the subjectivity and polarity of the text
+
+class data(db.Model):
+	Id = db.Column("Id", db.Integer, primary_key=True)
+	Text = db.Column(db.String(100))
+	Sentiment = db.Column(db.String(20))
+
+	def __init__(self, Text, Sentiment):
+		self.Text = Text
+		self.Sentiment = Sentiment
 
 with open('my_classifier.pickle', 'rb') as f:
     classifier = load(f)
@@ -27,6 +42,10 @@ def hello():
 
         else:
             pass
+
+        usr_data = data(sentence, sentiment.split()[0])
+        db.session.add(usr_data)
+        db.session.commit()
 
         text = "You have entered \"" + sentence + "\""
         return render_template('index.html', text=text, sentiment="Sentiment: " + sentiment)
@@ -52,4 +71,5 @@ def fast_api(sentence):
 
 
 if __name__ == "__main__":
+    db.create_all() 
     app.run(debug=True)
