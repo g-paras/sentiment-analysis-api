@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from model_nltk import predict_sentiment
 from pickle import load
 #from textblob import TextBlob
@@ -42,6 +42,13 @@ def about():
 @app.route('/member')
 def contact():
     return render_template('members.html')
+
+
+@app.route('/fast-api/<sentence>')
+def fast_api(sentence):
+    sentiment = predict_sentiment(sentence, classifier)
+    
+    return jsonify({'sentence':sentence, 'sentiment':sentiment})
 
 
 if __name__ == "__main__":
