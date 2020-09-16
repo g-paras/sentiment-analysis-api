@@ -3,12 +3,15 @@ from model_nltk import predict_sentiment
 from pickle import load
 from flask_sqlalchemy import SQLAlchemy
 import os
+import click
+from flask.cli import with_appcontext
 #from textblob import TextBlob
 
 app = Flask(__name__, template_folder='templates')
 
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL')
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
 db = SQLAlchemy(app)
 
 
@@ -73,4 +76,4 @@ def fast_api(sentence):
 
 if __name__ == "__main__":
     db.create_all() 
-    app.run(debug=True)
+    #app.run(debug=True)
