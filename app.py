@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from model_nltk import predict_sentiment
 from pickle import load
 from flask_sqlalchemy import SQLAlchemy
+import os
 #from textblob import TextBlob
 
 app = Flask(__name__, template_folder='templates')
