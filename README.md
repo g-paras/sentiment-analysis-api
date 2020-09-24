@@ -1,4 +1,4 @@
-<img style="width:5%; height:5%;" src="https://github.com/g-paras/sentiment-analysis-api/blob/master/static/icon.png?raw=true">
+<img style="width:5%; height:5%;" src="https://github.com/g-paras/sentiment-analysis-api/blob/master/static/img/icon.png?raw=true">
 
 # Sentiment Analysis
 This is a sentiment analysis web applications, we have used nltk tweet sample for training model and Naive bais classier and deployed using flask api on heroku server.
