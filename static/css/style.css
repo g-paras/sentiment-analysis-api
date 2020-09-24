@@ -5,7 +5,7 @@
 }
 
 body {
-    background: url("{{url_for('static', filename='/img/bg.jpg')}}");
+    background: url(https://sentiment-analysis-web-app.herokuapp.com/static/img/bg.jpg);
     color: #fff;
     background-position: center;
     text-align: center;
