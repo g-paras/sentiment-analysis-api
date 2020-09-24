@@ -3,12 +3,11 @@ from model_nltk import predict_sentiment
 from pickle import load
 from flask_sqlalchemy import SQLAlchemy
 import os
-import click
-from flask.cli import with_appcontext
 #from textblob import TextBlob
 
 app = Flask(__name__, template_folder='templates')
 
+# "sqlite:///data.sqlite"
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL')
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
@@ -19,20 +18,21 @@ db = SQLAlchemy(app)
 # textblob was used in the development mode for checking the subjectivity and polarity of the text
 
 class data(db.Model):
-	Id = db.Column("Id", db.Integer, primary_key=True)
-	Text = db.Column(db.String(100))
-	Sentiment = db.Column(db.String(20))
+    Id = db.Column("Id", db.Integer, primary_key=True)
+    Text = db.Column(db.String(100))
+    Sentiment = db.Column(db.String(20))
 
-	def __init__(self, Text, Sentiment):
-		self.Text = Text
-		self.Sentiment = Sentiment
+    def __init__(self, Text, Sentiment):
+        self.Text = Text
+        self.Sentiment = Sentiment
+
 
 with open('my_classifier.pickle', 'rb') as f:
     classifier = load(f)
 
 
 @app.route('/', methods=['POST', 'GET'])
-def hello():
+def home():
     if request.method == 'POST':
         sentence = request.form.get('twt')
 
@@ -70,10 +70,15 @@ def contact():
 @app.route('/fast-api/<sentence>')
 def fast_api(sentence):
     sentiment = predict_sentiment(sentence, classifier)
-    
-    return jsonify({'sentence':sentence, 'sentiment':sentiment})
+
+    return jsonify({'sentence': sentence, 'sentiment': sentiment})
+
+
+@app.errorhandler(404)
+def error404(error):
+    return render_template("error404.html"), 404
 
 
 if __name__ == "__main__":
-    db.create_all() 
-    #app.run(debug=True)
+    db.create_all()
+    app.run(debug=True)
