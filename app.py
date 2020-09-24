@@ -3,7 +3,7 @@ from model_nltk import predict_sentiment
 from pickle import load
 from flask_sqlalchemy import SQLAlchemy
 import os
-#from textblob import TextBlob
+from textblob import TextBlob
 
 app = Flask(__name__, template_folder='templates')
 
@@ -72,6 +72,27 @@ def fast_api(sentence):
     sentiment = predict_sentiment(sentence, classifier)
 
     return jsonify({'sentence': sentence, 'sentiment': sentiment})
+
+
+@app.route('/upload')
+def upload():
+    return render_template("upload.html")
+
+
+@app.route('/canvas')
+def canvas():
+    subject = []
+    polar = []
+    pos = 0
+    neg = 0
+    with open('review.txt') as file:
+        for i in file.readlines():
+            a = TextBlob(i).sentiment.polarity*100
+            subject.append(TextBlob(i).sentiment.subjectivity*100)
+            polar.append(a)
+            if a > 0: pos += 1
+            else: neg += 1
+    return render_template("canvas.html", value1=subject, value2=polar, pos=pos, neg=neg)
 
 
 @app.errorhandler(404)
