@@ -9,7 +9,7 @@ body {
     background: -webkit-linear-gradient(bottom right, #454545, #949494);
     background: -moz-linear-gradient(bottom right, #454545, #949494);
     background: linear-gradient(to top left, #454545, #949494); */
-    background: url("{{url_for('static', filename='/img/bg.jpg')}}");
+    background: url(/static/img/bg.jpg);
     background-position: center;
     color: #fff;
     max-width: 700px;
