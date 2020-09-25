@@ -3,8 +3,8 @@
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>About this Project</title>
-	<link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='icon.png')}}">
+	<title>File Uploader</title>
+	<link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='img/icon.png')}}">
 	<link rel="stylesheet" href="{{url_for('static', filename = 'css/index.css')}}">
 </head>
 
@@ -16,9 +16,11 @@
 			<li><a class="active" href="/about">About</a></li>
 		</ul>
 	</div><br>
-    <h1>Upload the text file</h1><br>
+	<h1>File Uploader</h1><br>
+	<hr><br>
+    <h2>Upload the text file</h2><br><br>
     <form action="/canvas" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file">
+        <input type="file" name="file"><br><br>
         <input type="submit" value="Upload">
     </form>
 </body>

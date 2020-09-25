@@ -5,24 +5,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curves and Representation</title>
-    <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='icon.png')}}">
+    <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='img/icon.png')}}">
     <style>
         body {
             background: url(https://sentiment-analysis-web-app.herokuapp.com/static/img/bg.jpg);
             background-position: center;
             font-family: "Arial Rounded MT Bold";
         }
+        .canvas{
+            border:2px solid #444444;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .container{
+            max-width: 700px;
+            margin: auto;
+            color: #fff;
+        }
+        .nav {
+            text-align: center;
+            font-family: "Arial Rounded MT Bold";
+            float: right;
+        }
+
+        .nav ul {
+            list-style: none;
+        }
+
+        .nav ul li {
+            display: inline-block;
+            margin: 13px
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+            margin: 10px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+
+        .nav ul li a.active {
+            background: #fff;
+            color: #404040;
+        }
+
+        .nav ul li a:hover {
+            background: #fff;
+            color: #404040;
+        }
+
+        hr {
+            border: 1px solid #fff;
+            margin: 5px;
+        }
     </style>
 </head>
 
 <body>
-    <center>
-        <h1>Graphical representation of the Sentiment Analysis</h1>
-        <h2>Subjectivity and Polarity</h2>
-    </center><br>
-    <div id="subjectivity" style="height: 300px; width: 100%; margin-bottom: 40px;"></div>
-    <div id="polarity" style="height: 300px; width: 100%; margin-bottom: 40px;"></div><br>
-    <div id="posneg" style="height: 300px; width: 100%; margin-bottom: 40px;"></div>
+    <div class="container">
+    <div class = nav>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/member">Members</a></li>
+			<li><a class="active" href="/about">About</a></li>
+		</ul>
+    </div>
+	<h1>Graphs and Curves</h1><br></div>
+    <hr><br>
+    <center style="color: #fff;">
+    <h2>Subjectivity and Polarity</h2><br><br><br></center>
+    <div class='canvas' id="subjectivity" style="height: 300px; width: 100%;"></div>
+    <div class='canvas' id="polarity" style="height: 300px; width: 100%;"></div><br>
+    <div class='canvas' id="posneg" style="height: 300px; width: 100%;"></div>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script>
         window.onload = subject();
