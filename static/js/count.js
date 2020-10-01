@@ -22,3 +22,4 @@ function posneg() {
     });
     chart.render();
 }
+// dataPoints may vary, these are just for demonstration purpose

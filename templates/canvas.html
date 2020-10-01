@@ -16,6 +16,9 @@
             border:2px solid #444444;
             border-radius: 5px;
             margin-bottom: 20px;
+            /* padding: 10px; */
+            width: 100%;
+            height: 300px;
         }
         .container{
             max-width: 700px;
@@ -76,9 +79,9 @@
     <hr><br>
     <center style="color: #fff;">
     <h2>Subjectivity and Polarity</h2><br><br><br></center>
-    <div class='canvas' id="subjectivity" style="height: 300px; width: 100%;"></div>
-    <div class='canvas' id="polarity" style="height: 300px; width: 100%;"></div><br>
-    <div class='canvas' id="posneg" style="height: 300px; width: 100%;"></div>
+    <div class='canvas' id="subjectivity"></div>
+    <div class='canvas' id="polarity"></div><br>
+    <div class='canvas' id="posneg"></div>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script>
         window.onload = subject();
@@ -120,7 +123,7 @@
                     ]
                 }]
             });
-        chart.render();
+            chart.render();
         }
 
         function posneg() {

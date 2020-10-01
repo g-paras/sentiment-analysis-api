@@ -22,3 +22,4 @@ function polar() {
     chart.render();
 }
 
+// these dataPoints may vary, the values used here are just for demonstration purposes

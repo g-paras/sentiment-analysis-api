@@ -1,3 +1,4 @@
+# importing libraries for flask, database, model
 from flask import Flask, render_template, request, jsonify
 from model_nltk import predict_sentiment
 from pickle import load
@@ -17,6 +18,7 @@ db = SQLAlchemy(app)
 # I have creted two models but I am using model_nltk because of its high accurcy and less execution time.
 # textblob was used in the development mode for checking the subjectivity and polarity of the text
 
+# class for creating and initialising database
 class data(db.Model):
     Id = db.Column("Id", db.Integer, primary_key=True)
     Text = db.Column(db.String(100))
@@ -27,10 +29,12 @@ class data(db.Model):
         self.Sentiment = Sentiment
 
 
+# loading classifier
 with open('my_classifier.pickle', 'rb') as f:
     classifier = load(f)
 
 
+# route for home page
 @app.route('/', methods=['POST', 'GET'])
 def home():
     if request.method == 'POST':
@@ -57,16 +61,19 @@ def home():
     return render_template('index.html')
 
 
+# route for about page
 @app.route('/about')
 def about():
     return render_template('about.html')
 
 
+# route for members page
 @app.route('/member')
 def contact():
     return render_template('members.html')
 
 
+# route for fastapi
 @app.route('/fast-api/<sentence>')
 def fast_api(sentence):
     sentiment = predict_sentiment(sentence, classifier)
@@ -74,11 +81,13 @@ def fast_api(sentence):
     return jsonify({'sentence': sentence, 'sentiment': sentiment})
 
 
+# route for uploading and saving temperary file
 @app.route('/upload')
 def upload():
     return render_template("upload.html")
 
 
+# route for displaying the curves for the given text file
 @app.route('/canvas')
 def canvas():
     subject = [37.351190476190474, 54.50000000000001, 83.75, 50.0, 49.00000000000001, 68.0, 33.05555555555556, 72.08333333333334, 80.3030303030303, 55.00000000000001, 64.40476190476191, 31.785714285714285, 55.625, 0.0, 79.16666666666666, 80.57142857142857, 36.220238095238095, 75.0, 25.833333333333336, 54.99999999999999, 56.904761904761905, 100.0, 56.666666666666664, 20.833333333333336, 72.5, 46.666666666666664, 100.0, 48.00000000000001, 66.75925925925925, 50.71428571428571, 75.0, 54.833333333333336, 51.16666666666667, 57.857142857142854, 65.5952380952381, 75.0, 50.0, 60.0, 76.66666666666666, 10.0, 70.0, 40.0, 100.0, 53.333333333333336, 27.083333333333332, 35.55555555555556, 61.66666666666667, 63.33333333333334, 35.55555555555556, 50.476190476190474, 8.333333333333332, 42.00000000000001, 45.0, 47.5, 20.0, 70.0, 50.0, 50.0, 43.05555555555555, 40.00000000000001, 41.111111111111114, 72.5, 52.38095238095239, 52.5, 38.27777777777778, 53.99999999999999, 70.0, 45.0, 72.4074074074074, 50.0, 83.75,
