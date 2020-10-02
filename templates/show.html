@@ -7,8 +7,8 @@
 </head>
 <body>
     <h1>Here is the first 10 rows of you dataset</h1>
-    {{% for data in table %}}
+    {% for data in table %}
         <h2>{{ data.Id }} | {{ data.Text }} | {{ data.Sentiment }}</h2>
-    {{% endfor %}}
+    {% endfor %}
 </body>
 </html>
