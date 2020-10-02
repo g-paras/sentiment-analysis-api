@@ -1,10 +1,11 @@
 # importing libraries for flask, database, model
 from flask import Flask, render_template, request, jsonify
-from model_nltk import predict_sentiment
-from pickle import load
 from flask_sqlalchemy import SQLAlchemy
-import os
+from model_nltk import predict_sentiment
+from datetime import datetime
 from textblob import TextBlob
+from pickle import load
+import os
 
 app = Flask(__name__, template_folder='templates')
 
@@ -111,6 +112,12 @@ def canvas():
     #         if a > 0: pos += 1
     #         else: neg += 1
     return render_template("canvas.html", value1=subject, value2=polar, pos=pos, neg=neg)
+
+
+@app.route('/show')
+def show():
+    table = data.query.limit(10)
+    return render_template('show.html', table = table)
 
 
 @app.errorhandler(404)
