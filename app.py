@@ -110,6 +110,7 @@ def canvas():
         if allowed_file(file.filename):
             file.save(file.filename)
             try:
+                return 'paras'
                 with open(file.filename) as file:
                     for i in range(100):
                         t = file.readline()
