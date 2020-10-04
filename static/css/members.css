@@ -12,6 +12,7 @@ body {
     max-width: 700px;
     margin: auto;
     font-family: "Arial Rounded MT Bold";
+    background-attachment: fixed;
 }
 
 hr {
