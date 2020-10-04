@@ -64,3 +64,7 @@ div ul li a:hover {
     font-size: 1.3em;
     text-shadow: 2px 3px 6px black;
 }
+@media only screen and (max-width: 583px) {
+    .nav {width: 100%;
+    justify-content: space-between;}
+}
