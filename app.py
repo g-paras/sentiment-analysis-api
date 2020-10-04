@@ -108,10 +108,9 @@ def canvas():
         polar = []
         file = request.files['file']
         if allowed_file(file.filename):
-            filepath = os.path.join('static/temp', file.filename)
-            file.save(filepath)
+            file.save(file.filename)
             try:
-                with open(filepath) as file:
+                with open(file.filename) as file:
                     for i in range(100):
                         t = file.readline()
                         a = TextBlob(i).sentiment.polarity*100
@@ -119,7 +118,7 @@ def canvas():
                         polar.append(a)
                         if a > 0: pos += 1
                         else: neg += 1
-                os.remove(filepath)
+                os.remove(file.filename)
                 return render_template("canvas.html", value1=subject, value2=polar, pos=pos, neg=neg)
             except:
                 return '<h1>Your file type is not supported</h1>'
