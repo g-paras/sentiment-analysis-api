@@ -1,14 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <title>Data Table | Sentiment Analysis</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show Data | Sentiment Analysis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='img/icon.png')}}">
+    <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="vhttps://colorlib.com/etc/tb/Table_Responsive_v1/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/css/util.css">
 </head>
+
 <body>
-    <h1>Here is the first 10 rows of you dataset</h1>
-    {% for data in table %}
-        <h2>{{ data.Id }} | {{ data.Text }} | {{ data.Sentiment }}</h2>
-    {% endfor %}
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100">
+                    <table>
+                        <thead>
+                            <tr class="table100-head">
+                                <th class="column2">Id</th>
+                                <th class="column1">Sentence</th>
+                                <th class="column3">Sentiment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in table %}
+                            <tr>
+                                <td class="column2">{{data.Id}}</td>
+                                <td class="column1">{{data.Text}}</td>
+                                <td class="column3">{{data.Sentiment}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/jquery/jquery-3.2.1.min.js" type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
+
+    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/bootstrap/js/popper.js" type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
+    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/bootstrap/js/bootstrap.min.js" type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
+
+    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/select2/select2.min.js" type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
+
+    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/js/main.js" type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"
+        type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
+    <script type="3cdf87737ba5b98234cafe0e-text/javascript">
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+    <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"
+        data-cf-settings="3cdf87737ba5b98234cafe0e-|49" defer=""></script>
 </body>
+
 </html>
