@@ -145,7 +145,7 @@ def canvas():
 # this route is for showing the data of the database with in html template
 @app.route('/show')
 def show():
-    table = data.query.limit(20)[::-1]
+    table = data.query.all[::-1]
     return render_template('show.html', table=table)
 
 
