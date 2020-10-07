@@ -1,7 +1,8 @@
-from nltk.stem.wordnet import WordNetLemmatizer
-from nltk.corpus import twitter_samples, stopwords
+# importing libraries for persorming the sentiment analysis, cleaning data, training and saving model
 from nltk.tag import pos_tag
 from nltk.tokenize import word_tokenize
+from nltk.stem.wordnet import WordNetLemmatizer
+from nltk.corpus import twitter_samples, stopwords
 from nltk import FreqDist, classify, NaiveBayesClassifier
 import pickle
 import re
@@ -10,7 +11,7 @@ import random
 
 
 def remove_noise(tweet_tokens, stop_words=()):
-
+    '''This function removes the links or hashtags presesnt in the text and change the verbs to its first form'''
     cleaned_tokens = []
 
     for token, tag in pos_tag(tweet_tokens):
@@ -40,17 +41,20 @@ def get_all_words(cleaned_tokens_list):
 
 
 def get_tweets_for_model(cleaned_tokens_list):
+    '''This function takes the cleaned token list as input and reutrn a list which is suitable to fed to the classifier'''
     for tweet_tokens in cleaned_tokens_list:
         yield dict([token, True] for token in tweet_tokens)
 
 
 def predict_sentiment(sentence, classifier):
+    '''predict_sentiment function predict the senitment of the text which was given as a argument'''
     custom_tokens = remove_noise(word_tokenize(sentence))
     return classifier.classify(
         dict([token, True] for token in custom_tokens))
 
 
 def save_model():
+    '''Saving the trained classifier'''
     f = open('my_classifier.pickle', 'wb')
     pickle.dump(classifier, f)
     f.close()
