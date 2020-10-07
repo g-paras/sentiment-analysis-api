@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* background: #404040;
+    background: -webkit-linear-gradient(bottom right, #454545, #949494);
+    background: -moz-linear-gradient(bottom right, #454545, #949494);
+    background: linear-gradient(to top left, #454545, #949494); */
+    background: url(https://sentiment-analysis-web-app.herokuapp.com/static/img/bg.jpg);
+    background-position: center;
+    color: #fff;
+    max-width: 700px;
+    margin: auto;
+    font-family: "Arial Rounded MT Bold";
+}
+
+hr {
+    border: 1px solid #fff;
+    margin: 5px;
+}
+
+h1 {
+    text-align: center;
+}
+
+div {
+    float: right;
+}
+
+div ul {
+    list-style: none;
+}
+
+div ul li {
+    display: inline-block;
+    margin: 13px
+}
+
+div ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+div ul li a.active {
+    background: #fff;
+    color: #404040;
+}
+
+div ul li a:hover {
+    background: #fff;
+    color: #404040;
+}
+
+.text {
+    padding: 20px;
+    margin: 20px;
+    font-size: 1.3em;
+    text-shadow: 2px 3px 6px black;
+}
+@media only screen and (max-width: 583px) {
+    .nav {
+    width: 100%;
+    justify-content: space-between;
+    }
+}
