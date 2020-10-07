@@ -149,10 +149,6 @@ def login():
 @app.route('/show', methods=['GET', 'POST'])
 def show():
     if request.method == "POST":
-        print(request.form.get('username'))
-        print(request.form.get('pwd') )
-        print(os.environ.get('UN'))
-        print(os.environ.get('PWD'))
         if request.form.get('username') == os.environ.get('UN') and request.form.get('pwd') == os.environ.get('PWD'):
             table = data.query.all()[::-1]
             return render_template('show.html', table=table)
