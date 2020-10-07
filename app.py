@@ -154,7 +154,7 @@ def show():
         print(os.environ.get('UN'))
         print(os.environ.get('PWD'))
         if request.form.get('username') == os.environ.get('UN') and request.form.get('pwd') == os.environ.get('PWD'):
-            table = data.query.all()[-1:-51]
+            table = data.query.all()[::-1]
             return render_template('show.html', table=table)
         else:
             return render_template('login.html', error='Invalid Credentials')
