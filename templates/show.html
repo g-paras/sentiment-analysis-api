@@ -6,11 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='img/icon.png')}}">
-    <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="vhttps://colorlib.com/etc/tb/Table_Responsive_v1/vendor/animate/animate.css">
-    <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/select2/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://colorlib.com/etc/tb/Table_Responsive_v1/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="vhttps://colorlib.com/etc/tb/Table_Responsive_v1/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/show.css')}}">
     <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/css/util.css">
 </head>
@@ -26,6 +31,7 @@
                                 <th class="column2">Id</th>
                                 <th class="column1">Sentence</th>
                                 <th class="column3">Sentiment</th>
+                                <th class="column3">Date </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,6 +40,7 @@
                                 <td class="column2">{{data.Id}}</td>
                                 <td class="column1">{{data.Text}}</td>
                                 <td class="column3">{{data.Sentiment}}</td>
+                                <td class="column3">{{data.Date}}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -43,14 +50,19 @@
         </div>
     </div>
 
-    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/jquery/jquery-3.2.1.min.js" type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
+    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/jquery/jquery-3.2.1.min.js"
+        type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
 
-    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/bootstrap/js/popper.js" type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
-    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/bootstrap/js/bootstrap.min.js" type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
+    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/bootstrap/js/popper.js"
+        type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
+    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/bootstrap/js/bootstrap.min.js"
+        type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
 
-    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/select2/select2.min.js" type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
+    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/select2/select2.min.js"
+        type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
 
-    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/js/main.js" type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
+    <script src="https://colorlib.com/etc/tb/Table_Responsive_v1/js/main.js"
+        type="3cdf87737ba5b98234cafe0e-text/javascript"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"
         type="3cdf87737ba5b98234cafe0e-text/javascript"></script>

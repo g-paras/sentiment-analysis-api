@@ -12,9 +12,9 @@ app = Flask(__name__, template_folder='templates')
 # "sqlite:///data.sqlite"
 # /// for relative path
 # //// for absolute path
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL')
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL', "sqlite:///info.sqlite3")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
+app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY', '')
 
 db = SQLAlchemy(app)
 
@@ -23,11 +23,12 @@ db = SQLAlchemy(app)
 # textblob is used for ploting the subjectivity and polarity curve for the input data
 
 # class for creating and initialising database
-class data(db.Model):
+class New_Data(db.Model):
 
     Id = db.Column(db.Integer, primary_key=True)
     Text = db.Column(db.Text)
     Sentiment = db.Column(db.String(20))
+    Date = db.Column(db.DateTime, default=datetime.now())
 
     def __init__(self, Text, Sentiment):
         self.Text = Text
@@ -61,7 +62,7 @@ def home():
         else:
             pass
 
-        usr_data = data(sentence, sentiment.split()[0])
+        usr_data = New_Data(sentence, sentiment.split()[0])
         db.session.add(usr_data)
         db.session.commit()
 
@@ -150,7 +151,7 @@ def login():
 def show():
     if request.method == "POST":
         if request.form.get('username') == os.environ.get('UN') and request.form.get('pwd') == os.environ.get('PWD'):
-            table = data.query.all()[::-1]
+            table = New_Data.query.all()[::-1]
             return render_template('show.html', table=table)
         else:
             return render_template('login.html', error='Invalid Credentials')
