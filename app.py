@@ -31,7 +31,7 @@ class New_Data(db.Model):
     Id = db.Column(db.Integer, primary_key=True)
     Text = db.Column(db.Text)
     Sentiment = db.Column(db.String(20))
-    Date = db.Column(db.DateTime, default=datetime.now(IST).strftime('%d-%m-%Y %H:%M:%S'))
+    Date = db.Column(db.DateTime, default=datetime.now(IST).strftime('%Y-%m-%d %H:%M:%S'))
 
     def __init__(self, Text, Sentiment):
         self.Text = Text
