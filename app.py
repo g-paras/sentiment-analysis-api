@@ -5,6 +5,7 @@ from model_nltk import predict_sentiment
 from datetime import datetime
 from textblob import TextBlob
 from pickle import load
+import pytz
 import os
 
 app = Flask(__name__, template_folder='templates')
@@ -18,6 +19,8 @@ app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY', '')
 
 db = SQLAlchemy(app)
 
+IST = pytz.timezone('Asia/Kolkata')
+
 
 # I have creted two models but I am using model_nltk because of its high accurcy and less execution time.
 # textblob is used for ploting the subjectivity and polarity curve for the input data
@@ -28,7 +31,7 @@ class New_Data(db.Model):
     Id = db.Column(db.Integer, primary_key=True)
     Text = db.Column(db.Text)
     Sentiment = db.Column(db.String(20))
-    Date = db.Column(db.DateTime, default=datetime.now())
+    Date = db.Column(db.DateTime, default=datetime.now(IST).strftime('%d-%m-%Y %H:%M:%S'))
 
     def __init__(self, Text, Sentiment):
         self.Text = Text
@@ -143,6 +146,7 @@ def canvas():
 # route for admin login panel
 @app.route('/login')
 def login():
+ 
     return render_template('login.html', error=False)
 
 
