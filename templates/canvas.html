@@ -7,32 +7,37 @@
     <title>Curves and Representation</title>
     <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='img/icon.png')}}">
     <style>
-        *{
+        * {
             margin: 0%;
             padding: 0%;
             box-sizing: border-box;
         }
+
         body {
             background: url(https://sentiment-analysis-web-app.herokuapp.com/static/img/bg.jpg);
             background-position: center;
             font-family: "Arial Rounded MT Bold";
         }
-        .canvas{
-            border:2px solid #444444;
+
+        .canvas {
+            border: 2px solid #444444;
             border-radius: 5px;
-            margin-bottom: 20px; 
+            margin-bottom: 20px;
             width: 90%;
             height: 300px;
             margin: auto;
         }
-        #head{
+
+        #head {
             text-align: center;
         }
-        .container{
+
+        .container {
             max-width: 700px;
             margin: auto;
             color: #fff;
         }
+
         .nav {
             text-align: center;
             font-family: "Arial Rounded MT Bold";
@@ -72,36 +77,43 @@
             border: 1px solid #fff;
             margin: 5px;
         }
-        .da{
+
+        .da {
             width: 90%;
             margin: auto;
         }
-        .data{
+
+        .data {
             border: 2px solid white;
             margin: 10px;
             padding: 5px;
         }
+
         @media only screen and (max-width: 583px) {
-            .nav {width: 100%;
-            justify-content: space-between;}
+            .nav {
+                width: 100%;
+                justify-content: space-between;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-    <div class = nav>
-		<ul> 
-			<li><a href="/">Home</a></li>
-			<li><a href="/member">Members</a></li>
-			<li><a class="active" href="/about">About</a></li>
-		</ul>
+        <div class=nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/member">Members</a></li>
+                <li><a class="active" href="/about">About</a></li>
+            </ul>
+        </div>
+        <br>
+        <h1 id="head">Graphs&nbspand&nbspCurves</h1><br>
     </div>
-    <br>
-	<h1 id="head">Graphs&nbspand&nbspCurves</h1><br></div>
     <hr><br>
     <center style="color: #fff;">
-    <h2>Subjectivity and Polarity</h2><br><br><br></center>
+        <h2>Subjectivity and Polarity</h2><br><br><br>
+    </center>
     <div class='canvas' id="subjectivity"></div><br><br>
     <div class='canvas' id="polarity"></div><br><br>
     <div class='canvas' id="posneg"></div><br><br>
@@ -146,7 +158,7 @@
                     ]
                 }]
             });
-            chart.render();
+        chart.render();
         }
 
         function posneg() {
@@ -171,7 +183,7 @@
                     ]
                 }]
             });
-            chart.render();
+        chart.render();
         }
     </script>
 </body>
