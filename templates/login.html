@@ -1,98 +1,106 @@
-
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='img/icon.png')}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Admin Signin | Sentiment Analysis</title>
 
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='img/icon.png')}}">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Admin Panel | Sentiment Analysis</title>
 
-    <!-- Bootstrap core CSS -->
-<link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+	<link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+	<style>
+		.bd-placeholder-img {
+			font-size: 1.125rem;
+			text-anchor: middle;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+		@media (min-width: 768px) {
+			.bd-placeholder-img-lg {
+				font-size: 3.5rem;
+			}
+		}
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      html,body {
-        height: 100%;
-      }
+		html,
+		body {
+			height: 100%;
+		}
 
-      body {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-align: center;
-        align-items: center;
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #f5f5f5;
-      }
+		body {
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-align: center;
+			align-items: center;
+			padding-top: 40px;
+			padding-bottom: 40px;
+			background-color: #f5f5f5;
+		}
 
-      .form-signin {
-        width: 100%;
-        max-width: 330px;
-        padding: 15px;
-        margin: auto;
-      }
-      .form-signin .checkbox {
-        font-weight: 400;
-      }
-      .form-signin .form-control {
-        position: relative;
-        box-sizing: border-box;
-        height: auto;
-        padding: 10px;
-        font-size: 16px;
-      }
-      .form-signin .form-control:focus {
-        z-index: 2;
-      }
-      .form-signin input[type="text"] {
-        margin-bottom: -1px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-      .form-signin input[type="password"] {
-        margin-bottom: 10px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-      }
-    </style>
-  </head>
-  <body class="text-center">
-    {% if error %}
-      <div class="alert alert-danger" role="alert" style="position: absolute; width: 100%; top: 0; left: 0;">
-        {{error}}
-      </div>
-    {% endif %}    
-    <form class="form-signin" method="POST" action='/show'>
-  <img class="mb-4" src="{{url_for('static', filename='img/icon.png')}}" alt="" width="72" height="72">
-  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-  <label for="inputEmail" class="sr-only">Username</label>
-  <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Username" required autofocus>
-  <br>
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" name="pwd" class="form-control" placeholder="Password" required>
-  <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
-  </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-  <p class="mt-5 mb-3 text-muted">&copy; 2020 - @gparas</p>
-</form>
+		.form-signin {
+			width: 100%;
+			max-width: 330px;
+			padding: 15px;
+			margin: auto;
+		}
+
+		.form-signin .checkbox {
+			font-weight: 400;
+		}
+
+		.form-signin .form-control {
+			position: relative;
+			box-sizing: border-box;
+			height: auto;
+			padding: 10px;
+			font-size: 16px;
+		}
+
+		.form-signin .form-control:focus {
+			z-index: 2;
+		}
+
+		.form-signin input[type="text"] {
+			margin-bottom: -1px;
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+
+		.form-signin input[type="password"] {
+			margin-bottom: 10px;
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+	</style>
+</head>
+
+<body class="text-center">
+	{% if error %}
+	<div class="alert alert-danger" role="alert" style="position: absolute; width: 100%; top: 0; left: 0;">
+		{{error}}
+	</div>
+	{% endif %}
+	<form class="form-signin" method="POST" action='/show'>
+		<img class="mb-4" src="{{url_for('static', filename='img/icon.png')}}" alt="" width="72" height="72">
+		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+		<label for="inputEmail" class="sr-only">Username</label>
+		<input type="text" id="inputEmail" name="username" class="form-control" placeholder="Username" required
+			autofocus>
+		<br>
+		<label for="inputPassword" class="sr-only">Password</label>
+		<input type="password" id="inputPassword" name="pwd" class="form-control" placeholder="Password" required>
+		<div class="checkbox mb-3">
+			<label>
+				<input type="checkbox" value="remember-me"> Remember me
+			</label>
+		</div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		<p class="mt-5 mb-3 text-muted">&copy; 2020 - @gparas</p>
+	</form>
 </body>
+
 </html>

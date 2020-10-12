@@ -1,11 +1,11 @@
 from tensorflow.python.keras.datasets import imdb
-from tensorflow.python.keras.preprocessing.sequence import pad_sequences
 from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.preprocessing.sequence import pad_sequences
 from tensorflow.python.keras.layers import Embedding, Dense, GlobalAveragePooling1D
 from tensorflow.python.keras.callbacks import LambdaCallback
+from keras.models import load_model
 import matplotlib.pyplot as plt
 import numpy as np
-from keras.models import load_model
 
 
 # This model was used in early stage of this project and used as a reference, learned from coursesa project
@@ -111,12 +111,14 @@ print(class_names[np.argmax(prediction[0])])
 
 decode(x_test[1])
 
-#text = "i was working on that project and i find it quiet amazing and funny overall the experience was good and satisfying"
+text = "i was working on that project and i find it quiet amazing and funny overall the experience was good and satisfying"
 text = "working on this was a worst experience for me i hate this very much and wish no one should get though this"
 text = "you are a waste"
 t_list = []
+
 for i in text.split():
     t_list.append(word_index[i])
+    
 print(t_list)
 
 prediction = md.predict(np.expand_dims(t_list, axis=0))

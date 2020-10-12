@@ -1,5 +1,5 @@
 # importing libraries for flask, database, model
-from flask import Flask, render_template, request, jsonify, session
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from model_nltk import predict_sentiment
 from datetime import datetime
@@ -113,11 +113,11 @@ def canvas():
         if allowed_file(file.filename):
             file.save(file.filename)
             try:
-                with open(file.filename) as file:
+                with open(file.filename) as fl:
                     for i in range(100):
-                        t = file.readline()
-                        a = TextBlob(i).sentiment.polarity*100
-                        subject.append(TextBlob(i).sentiment.subjectivity*100)
+                        t = fl.readline()
+                        a = TextBlob(t).sentiment.polarity*100
+                        subject.append(TextBlob(t).sentiment.subjectivity*100)
                         polar.append(a)
                         if a > 0:
                             pos += 1
@@ -127,7 +127,8 @@ def canvas():
                 return render_template("canvas.html", value1=subject, value2=polar, pos=pos, neg=neg)
 
             except:
-                return render_template('upload.html', mssg='Kindly upload utf-8 encoded text file.')
+                os.remove(file.filename)
+                return render_template('upload.html', mssg='The uploaded file is not in correct format!!')
 
         return render_template('upload.html', mssg='Please upload a text file with .txt extension')
 
@@ -145,7 +146,7 @@ def canvas():
 
 # route for admin login panel
 @app.route('/login')
-def login():
+def login(error=None):
  
     return render_template('login.html', error=False)
 

@@ -18,21 +18,22 @@
 	</div><br>
 	<h1>File Uploader</h1><br>
 	<hr><br>
-    <h2>Upload the text file</h2><br><br>
-    <form action="/canvas" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file"><br><br>
-        <input type="submit" value="Upload" class="submit"><br>
-        <span>*file should be utf-8 encoded txt file</span>
-    </form>
-    <form action="/canvas">
-    	<br>
-    	<p style="font-size: 24px">You can either upload a file or just continue with the one available on the server.</p><br>
-    	<input type="submit" value="Continue" class="submit" style="width: 100px">
-    </form>
-    {% if mssg %}
-		<script>
-			alert("{{mssg}}");
-		</script>
+	<h2>Upload the text file</h2><br><br>
+	<form action="/canvas" method="POST" enctype="multipart/form-data">
+		<input type="file" name="file" required><br><br>
+		<input type="submit" value="Upload" class="submit"><br>
+		<span>*file should be utf-8 encoded txt file</span>
+	</form>
+	<form action="/canvas">
+		<br>
+		<p style="font-size: 24px">You can either upload a file or just continue with the one available on the server.
+		</p><br>
+		<input type="submit" value="Continue" class="submit" style="width: 100px">
+	</form>
+	{% if mssg %}
+	<script>
+		alert("{{mssg}}");
+	</script>
 	{% endif %}
 </body>
 
