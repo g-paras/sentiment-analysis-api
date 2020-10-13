@@ -128,9 +128,9 @@ def canvas():
 
             try:
                 with open(file.filename) as fl:
-                    content = len(fl.read().split('\n'))
-                    for i in range(content):
-                        t = fl.readline()
+                    content = fl.read().split('\n')
+                    for t in content:
+                        # t = fl.readline()
                         a = TextBlob(t).sentiment.polarity*100
                         subject.append(TextBlob(t).sentiment.subjectivity*100)
                         polar.append(a)
