@@ -91,7 +91,8 @@ def about():
 # route for members page
 @app.route('/member')
 def contact():
-    return render_template('members.html')
+    script = '''<script src="{{ url_for('static', filename='js/app.js') }}"></script>'''
+    return render_template('members.html', script=script)
 
 
 # route for fastapi
