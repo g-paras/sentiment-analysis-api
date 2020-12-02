@@ -108,7 +108,14 @@ def fast_api(sentence):
 @app.route('/fastapi', methods=['POST'])
 def fastapi():
     text = request.form['text']
-    return jsonify({'sentiment' : 'Positive' if TextBlob(text).sentiment.polarity > 0 else 'Negative'})
+    polarity = TextBlob(text).sentiment.polarity
+    if polarity > 0:
+        sentiment = 'Positive'
+    elif polarity < 0:
+        sentiment = 'Negaive'
+    else:
+        sentiment = 'Neutral'
+    return jsonify({'sentiment' : sentiment})
 
 
 # route for uploading and saving temperary file
@@ -212,8 +219,7 @@ def show():
 
 @app.route('/test')
 def test():
-    script = '''<script src="{{ url_for('static', filename='js/app.js') }}"></script>'''
-    return render_template('index.html', script=script)
+    return render_template('index.html', script=True)
 
 
 @app.errorhandler(404)

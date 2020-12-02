@@ -24,7 +24,7 @@
     <br>
     <br>
     <form method="POST">
-        <input type="text" name="twt" placeholder="Enter text here..." autocomplete="off" required autofocus>
+        <input type="text" id="text" name="twt" placeholder="Enter text here..." autocomplete="off" required autofocus>
         <br>
         <br>
         <input class="submit" type="submit" value="PREDICT">
@@ -51,7 +51,7 @@
     <br>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% if script %}
-        {{script}}
+        <script src='{{ url_for('static', filename='js/app.js') }}''></script>
     {% endif %}
 </body>
 
