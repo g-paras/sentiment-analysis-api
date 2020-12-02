@@ -19,4 +19,4 @@ with open('reviews.txt') as file:
             neg += 1
     total = len(file.readlines)
 
-print("Out of {total} reviews, {pos} are Positive and {neg} are Negative reviews")
+print(f"Out of {total} reviews, {pos} are Positive and {neg} are Negative reviews")

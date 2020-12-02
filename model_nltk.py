@@ -1,13 +1,14 @@
 # importing libraries for persorming the sentiment analysis, cleaning data, training and saving model
-from nltk.tag import pos_tag
-from nltk.tokenize import word_tokenize
-from nltk.stem.wordnet import WordNetLemmatizer
-from nltk.corpus import twitter_samples, stopwords
-from nltk import FreqDist, classify, NaiveBayesClassifier
 import pickle
+import random
 import re
 import string
-import random
+
+from nltk import FreqDist, NaiveBayesClassifier, classify
+from nltk.corpus import stopwords, twitter_samples
+from nltk.stem.wordnet import WordNetLemmatizer
+from nltk.tag import pos_tag
+from nltk.tokenize import word_tokenize
 
 
 def remove_noise(tweet_tokens, stop_words=()):
@@ -35,6 +36,7 @@ def remove_noise(tweet_tokens, stop_words=()):
 
 
 def get_all_words(cleaned_tokens_list):
+    '''It acts as an generator for the tokens'''
     for tokens in cleaned_tokens_list:
         for token in tokens:
             yield token
@@ -62,11 +64,13 @@ def save_model():
 
 if __name__ == "__main__":
 
+    # loading dataset for model trainig
     positive_tweets = twitter_samples.strings('positive_tweets.json')
     negative_tweets = twitter_samples.strings('negative_tweets.json')
     text = twitter_samples.strings('tweets.20150430-223406.json')
     tweet_tokens = twitter_samples.tokenized('positive_tweets.json')[0]
 
+    # saving the stopwords from the nltk into a variable
     stop_words = stopwords.words('english')
 
     positive_tweet_tokens = twitter_samples.tokenized('positive_tweets.json')

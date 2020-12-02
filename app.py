@@ -1,12 +1,14 @@
 # importing libraries for flask, database, model
-from flask import Flask, render_template, request, jsonify, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-from model_nltk import predict_sentiment
-from datetime import datetime
-from textblob import TextBlob
-from pickle import load
-import pytz
 import os
+from datetime import datetime
+from pickle import load
+
+import pytz
+from flask import Flask, jsonify, redirect, render_template, request, url_for
+from flask_sqlalchemy import SQLAlchemy
+from textblob import TextBlob
+
+from model_nltk import predict_sentiment
 
 app = Flask(__name__, template_folder='templates')
 
@@ -20,6 +22,7 @@ app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY', '')
 
 db = SQLAlchemy(app)
 
+# since the app is hosted on heroku so this line of code is to change the timezone
 IST = pytz.timezone('Asia/Kolkata')
 
 
@@ -32,6 +35,7 @@ class New_Data(db.Model):
     Id = db.Column(db.Integer, primary_key=True)
     Text = db.Column(db.Text)
     Sentiment = db.Column(db.String(20))
+    # .now(IST).strftime('%Y-%m-%d %H:%M:%S'))
     Date = db.Column(db.DateTime, default=datetime.now(IST).strftime('%Y-%m-%d %H:%M:%S'))
 
     def __init__(self, Text, Sentiment):
@@ -45,6 +49,7 @@ with open('my_classifier.pickle', 'rb') as f:
 
 
 def allowed_file(filename):
+    '''Checking file extension i.e. text file or not'''
     return '.' in filename and filename.split('.')[1] == 'txt'
 
 
@@ -66,6 +71,7 @@ def home():
         else:
             pass
 
+        # creating an instance of the data table for the database and commiting the changes
         usr_data = New_Data(sentence, sentiment.split()[0])
         db.session.add(usr_data)
         db.session.commit()
@@ -89,7 +95,8 @@ def contact():
 
 
 # route for fastapi
-@app.route('/fast-api/', defaults={'sentence' : 'Great'})
+# setting default value for the api
+@app.route('/fast-api/', defaults={'sentence': 'Great'})
 @app.route('/fast-api/<sentence>')
 def fast_api(sentence):
     sentiment = predict_sentiment(sentence, classifier)
@@ -97,13 +104,22 @@ def fast_api(sentence):
     return jsonify({'sentence': sentence, 'sentiment': sentiment})
 
 
+# setting post method for the api
+@app.route('/fastapi', methods=['POST'])
+def fastapi():
+    text = request.form['text']
+    return jsonify({'sentiment' : 'Positive' if TextBlob(text).sentiment.polarity > 0 else 'Negative'})
+
+
 # route for uploading and saving temperary file
 @app.route('/upload')
 def upload():
     mssg = request.args.get('msg')
+    # if the uploaded file is not a text file
     if mssg == "ntxt":
         mssg = "Kindly Upload a text file"
 
+    # if the uploaded textfile is not readable
     elif mssg == "incrt":
         mssg = "Upload file of correct format"
 
@@ -122,18 +138,21 @@ def canvas():
         subject = []
         polar = []
         file = request.files['file']
-        
+
+        # if the file is correct and readable then save it
         if allowed_file(file.filename):
             file.save(file.filename)
 
             try:
+                # open file, read the content perform the analysis and then return the template with the values
                 with open(file.filename) as fl:
                     content = fl.read().split('\n')
-                    for t in content:
+                    for line in content:
                         # t = fl.readline()
-                        a = TextBlob(t).sentiment.polarity*100
-                        subject.append(TextBlob(t).sentiment.subjectivity*100)
+                        a = TextBlob(line).sentiment.polarity*100
                         polar.append(a)
+                        subject.append(
+                            TextBlob(line).sentiment.subjectivity*100)
                         if a > 0:
                             pos += 1
                         else:
@@ -189,6 +208,11 @@ def show():
             return redirect(url_for('login', er="incrt"))
 
     return redirect(url_for('login', er="lnf"))
+
+
+@app.route('/test')
+def test():
+    return render_template('index.html')
 
 
 @app.errorhandler(404)
