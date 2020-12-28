@@ -8,7 +8,7 @@ from flask import Flask, jsonify, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from textblob import TextBlob
 
-from model_nltk import predict_sentiment
+from .model_nltk import predict_sentiment
 
 app = Flask(__name__, template_folder='templates')
 
@@ -36,7 +36,8 @@ class New_Data(db.Model):
     Text = db.Column(db.Text)
     Sentiment = db.Column(db.String(20))
     # .now(IST).strftime('%Y-%m-%d %H:%M:%S'))
-    Date = db.Column(db.DateTime, default=datetime.now(IST).strftime('%Y-%m-%d %H:%M:%S'))
+    Date = db.Column(db.DateTime, default=datetime.now(
+        IST).strftime('%Y-%m-%d %H:%M:%S'))
 
     def __init__(self, Text, Sentiment):
         self.Text = Text
@@ -112,10 +113,10 @@ def fastapi():
     if polarity > 0:
         sentiment = 'Positive'
     elif polarity < 0:
-        sentiment = 'Negaive'
+        sentiment = 'Negative'
     else:
         sentiment = 'Neutral'
-    return jsonify({'sentiment' : sentiment})
+    return jsonify({'sentiment': sentiment})
 
 
 # route for uploading and saving temperary file
