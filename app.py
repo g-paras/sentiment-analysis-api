@@ -8,7 +8,7 @@ from flask import Flask, jsonify, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from textblob import TextBlob
 
-from .model_nltk import predict_sentiment
+from model_nltk import predict_sentiment
 
 app = Flask(__name__, template_folder='templates')
 
