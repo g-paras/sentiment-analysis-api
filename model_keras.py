@@ -1,12 +1,11 @@
-import matplotlib.pyplot as plt
 import numpy as np
 from keras.models import load_model
-from tensorflow.python.keras.callbacks import LambdaCallback
-from tensorflow.python.keras.datasets import imdb
-from tensorflow.python.keras.layers import (Dense, Embedding,
-                                            GlobalAveragePooling1D)
-from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.preprocessing.sequence import pad_sequences
+from keras.callbacks import LambdaCallback
+from keras.datasets import imdb
+from keras.layers import Dense, Embedding, GlobalAveragePooling1D
+from keras.models import Sequential
+from keras.preprocessing.sequence import pad_sequences
+import matplotlib.pyplot as plt
 
 # This model was used in early stage of this project and used as a reference, learned from coursesa project
 

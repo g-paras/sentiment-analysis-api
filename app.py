@@ -1,14 +1,14 @@
 # importing libraries for flask, database, model
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 from pickle import load
 
 import pytz
-from flask import Flask, jsonify, redirect, render_template, request, url_for
+from flask import Flask, jsonify, redirect, render_template, request, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from textblob import TextBlob
 
-from .model_nltk import predict_sentiment
+from model_nltk import predict_sentiment
 
 app = Flask(__name__, template_folder='templates')
 
@@ -18,7 +18,8 @@ app = Flask(__name__, template_folder='templates')
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
     'DATABASE_URL', "sqlite:///data.sqlite")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY', '')
+app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY', 'thisissecret')
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=12)
 
 db = SQLAlchemy(app)
 
@@ -208,12 +209,22 @@ def login():
 @app.route('/show', methods=['GET', 'POST'])
 def show():
     if request.method == "POST":
-        if request.form.get('username') == os.environ.get('UN') and request.form.get('pwd') == os.environ.get('PWD'):
+        if request.form.get('username') == os.environ.get('sausr', 'gparas') and request.form.get('pwd') == os.environ.get('sapwd', 'gparas'):
+            session['sausr'] = request.form.get('username')
+            session['sapwd'] = request.form.get('pwd')
             table = New_Data.query.all()[::-1]
             return render_template('show.html', table=table)
 
         else:
             return redirect(url_for('login', er="incrt"))
+
+    try:
+        if 'sausr' in session:
+            table = New_Data.query.all()[::-1]
+            return render_template('show.html', table=table)
+
+    except:
+        pass
 
     return redirect(url_for('login', er="lnf"))
 
