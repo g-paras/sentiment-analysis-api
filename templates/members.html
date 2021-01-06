@@ -1,66 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About the creators of this webpage</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{{url_for('static', filename='img/icon.png')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/members.css')}}"
+    />
+    <style>
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>About the creators of this webpage</title>
-	<link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='img/icon.png')}}">
-	<link rel="stylesheet" href="{{url_for('static', filename='css/members.css')}}">
-</head>
+      ::-webkit-scrollbar-track {
+        background: gainsboro;
+        border-radius: 5px;
+      }
 
-<body>
-	<div class="main">
-		<div class="list">
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a class="active" href="/member">Members</a></li>
-				<li><a href="/about">About</a></li>
-			</ul>
-		</div>
-		<br>
-		<h1>DESIGNERS</h1>
-		<br>
-		<hr>
-		<div class="container">
-			<div class="image">
-				<img src="{{url_for('static',filename='img/paras.jpg')}}">
-			</div>
-			<h4>
-				<br>
-				Paras Gupta<br>
-				B.Tech ECE 1st year<br>
-				KIET Group of Institutions
-				<br>
-			</h4>
-		</div>
-		<div class="container">
-			<div class="image">
-				<img src="{{url_for('static', filename='img/kannu.png')}}">
-			</div>
-			<h4>
-				<br>
-				Kanishka Nagar<br>
-				B.Tech ECE 1st year<br>
-				KIET Group of Institutions
-				<br>
+      ::-webkit-scrollbar-thumb {
+        background: rgb(37, 37, 37);
+        border-radius: 5px;
+      }
 
-			</h4>
-		</div>
-		<div class="container">
-			<div class="image">
-				<img src="{{url_for('static', filename='img/uttuu.jpg')}}">
-			</div>
-			<h4>
-				<br>
-				Utkarsh Upadhyay<br>
-				B.Tech IT 1st year<br>
-				KIET Group of Institutions
-				<br>
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+    </style>
+  </head>
 
-			</h4>
-		</div>
-	</div>
-</body>
-
+  <body>
+    <div class="main">
+      <div class="list">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a class="active" href="/member">Members</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+      <br />
+      <h1>DESIGNERS</h1>
+      <hr />
+      <div class="container">
+        <div class="image">
+          <img src="{{url_for('static',filename='img/paras.jpg')}}" />
+        </div>
+        <h4>
+          <br />
+          Paras Gupta<br />
+          B.Tech ECE 1st year<br />
+          KIET Group of Institutions
+          <br />
+        </h4>
+      </div>
+      <div class="container">
+        <div class="image">
+          <img src="{{url_for('static', filename='img/kannu.png')}}" />
+        </div>
+        <h4>
+          <br />
+          Kanishka Nagar<br />
+          B.Tech ECE 1st year<br />
+          KIET Group of Institutions
+          <br />
+        </h4>
+      </div>
+      <div class="container">
+        <div class="image">
+          <img src="{{url_for('static', filename='img/uttuu.jpg')}}" />
+        </div>
+        <h4>
+          <br />
+          Utkarsh Upadhyay<br />
+          B.Tech IT 1st year<br />
+          KIET Group of Institutions
+          <br />
+        </h4>
+      </div>
+    </div>
+  </body>
 </html>

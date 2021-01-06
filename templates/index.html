@@ -7,6 +7,25 @@
     <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='img/icon.png')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
     <link rel="manifest" href="{{url_for('static', filename='manifest.json')}}">
+    <style>
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: gainsboro;
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: rgb(37, 37, 37);
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+    </style>
 </head>
 
 <body>
@@ -19,7 +38,6 @@
     </div>
     <br>
     <h1>Sentiment&nbspAnalysis</h1>
-    <br>
     <hr>
     <br>
     <br>

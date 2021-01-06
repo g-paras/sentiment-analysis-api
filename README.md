@@ -43,3 +43,5 @@ It might take few seconds to load please give it a try
 - Added session object to remember admin credentials to a small time
 
 - Now you can upload a test file of reviews and then it will show you the graph of the predicted sentiments. Check it out [here](https://sentiment-analysis-web-app.herokuapp.com/upload)
+
+- Implemented custom scroll bar, now it looks kind of cool and now you can use it as a pwa, go to 'add to screen' and then it will be a stand alone app
