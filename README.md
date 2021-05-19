@@ -40,7 +40,7 @@ It might take few seconds to load please give it a try
 
 - The above mentioned feature is in beta version, you can check it our [here](https://sentiment-analysis-web-app.herokuapp.com/test)
 
-- Added session object to remember admin credentials for some time
+- Added session object to remember admin credentials for short amount of time.
 
 - Now you can upload a test file of reviews and then it will show you the graph of the predicted sentiments. Check it out [here](https://sentiment-analysis-web-app.herokuapp.com/upload)
 
