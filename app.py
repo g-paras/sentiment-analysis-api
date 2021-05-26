@@ -61,7 +61,7 @@ def allowed_file(filename):
 @app.route("/", methods=["POST", "GET"])
 def home():
     if request.method == "POST":
-        sentence: str = request.form.get("twt")
+        sentence = str(request.form.get("twt"))
 
         sentiment = predict_sentiment(sentence, classifier)
 
