@@ -89,13 +89,13 @@ def home():
 
 
 # route for about page
-@app.get("/about")
+@app.route("/about")
 def about():
     return render_template("about.html")
 
 
 # route for members page
-@app.get("/member")
+@app.route("/member")
 def contact():
     return render_template("members.html")
 
@@ -111,7 +111,7 @@ def fast_api(sentence):
 
 
 # setting post method for the api
-@app.post("/fastapi")
+@app.route("/fastapi", methods=["POST"])
 def fastapi():
     text = request.form["text"]
     polarity = TextBlob(text).sentiment.polarity
@@ -125,7 +125,7 @@ def fastapi():
 
 
 # route for uploading and saving temperary file
-@app.get("/upload")
+@app.route("/upload")
 def upload():
     mssg = request.args.get("msg")
     # if the uploaded file is not a text file
@@ -193,7 +193,7 @@ def canvas():
 
 
 # route for admin login panel
-@app.get("/login")
+@app.route("/login")
 def login():
     error = request.args.get("er")
     if error == "incrt":
@@ -234,7 +234,7 @@ def show():
     return redirect(url_for("login", er="lnf"))
 
 
-@app.get("/test")
+@app.route("/test")
 def test():
     return render_template("index.html", script=True)
 
