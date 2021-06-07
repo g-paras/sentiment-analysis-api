@@ -77,8 +77,11 @@ def home():
 
         # creating an instance of the data table for the database and commiting the changes
         usr_data = New_Data(sentence, sentiment.split()[0])
-        db.session.add(usr_data)
-        db.session.commit()
+        try:
+            db.session.add(usr_data)
+            db.session.commit()
+        except:
+            pass
 
         text = 'You have entered "' + sentence + '"'
         return render_template(
@@ -217,7 +220,10 @@ def show():
         ) and request.form.get("pwd") == os.environ.get("sapwd", "gparas"):
             session["sausr"] = request.form.get("username")
             session["sapwd"] = request.form.get("pwd")
-            table = New_Data.query.all()[::-1]
+            try:
+                table = New_Data.query.all()[::-1]
+            except:
+                return redirect('/')
             return render_template("show.html", table=table)
 
         else:
