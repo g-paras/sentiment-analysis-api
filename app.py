@@ -17,7 +17,7 @@ app = Flask(__name__, template_folder="templates")
 # //// for absolute path
 
 DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///data.sqlite")
-DATABASE_URL.replace("postgres://", "postgresql://", 1)
+DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
