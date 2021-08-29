@@ -15,9 +15,11 @@ app = Flask(__name__, template_folder="templates")
 # "sqlite:///data.sqlite"
 # /// for relative path
 # //// for absolute path
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
-    "DATABASE_URL", "sqlite:///data.sqlite"
-)
+
+DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///data.sqlite")
+DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "thisissecret")
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=12)
