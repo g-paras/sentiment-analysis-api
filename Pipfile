@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+nltk = "*"
+textblob = "*"
+flask-sqlalchemy = "*"
+pytz = "*"
+psycopg2-binary = "*"
+
+[dev-packages]
+python-dotenv = "*"
+
+[requires]
+python_version = "3.6"

@@ -8,16 +8,17 @@ from flask import Flask, jsonify, redirect, render_template, request, session, u
 from flask_sqlalchemy import SQLAlchemy
 from textblob import TextBlob
 
-from model_nltk import predict_sentiment
+from .model_nltk import predict_sentiment
 
 app = Flask(__name__, template_folder="templates")
 
 # "sqlite:///data.sqlite"
 # /// for relative path
 # //// for absolute path
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
-    "DATABASE_URL", "sqlite:///data.sqlite"
-)
+
+DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///data.sqlite")
+DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "thisissecret")
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=12)
@@ -48,7 +49,7 @@ class New_Data(db.Model):
 
 
 # loading classifier
-with open("my_classifier.pickle", "rb") as f:
+with open("src/my_classifier.pickle", "rb") as f:
     classifier = load(f)
 
 
@@ -185,7 +186,7 @@ def canvas():
 
     # these readings are for mannual or you can say get request when there is no file upload.
     # these readings are not random value, the values are valid for the review.txt file present in static/temp
-    from values import polar, subject
+    from .values import polar, subject
 
     pos = 246
     neg = 254
@@ -222,8 +223,9 @@ def show():
             session["sapwd"] = request.form.get("pwd")
             try:
                 table = New_Data.query.all()[::-1]
-            except:
-                return redirect('/')
+            except Exception as e:
+                return str(e)
+                return redirect("/")
             return render_template("show.html", table=table)
 
         else:

@@ -5,9 +5,10 @@
 }
 
 body {
-  background: url("https://sentiment-analysis-web-app.herokuapp.com/static/img/bg.jpg");
+  background: url(../img/bg.jpg);
   color: #fff;
   background-position: center;
+  background-size: cover;
   text-align: center;
   max-width: 700px;
   margin: auto;

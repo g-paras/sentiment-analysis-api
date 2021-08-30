@@ -1,7 +1,0 @@
-Flask==1.1.2
-nltk==3.5
-gunicorn==20.0.4
-Flask-SQLAlchemy==2.4.4
-psycopg2==2.8.6
-textblob==0.15.3
-pytz==2020.1
